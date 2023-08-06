@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Pesel</title>
-    <style>
-    </style>
-    <script src="scripts.js"></script>
+  <meta charset="UTF-8">
+  <title>Generator Haseł</title>
+  <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-
+    <div class="container">
+        <h1>Generator Peseli</h1>
+        <div class="container2">
+            <div class="check_title" margin-bottom="10px" >Płeć:</div>
+            <input type="checkbox" id="sex-1">
+            <label for="myCheckbox">mężczyzna</label>
+            <input type="checkbox" id="sex-2">
+            <label for="myCheckbox">kobieta</label>
+            <div style="margin-bottom: 17px;"></div>
+            <input type="checkbox" id="sex-3" checked>
+            <label for="myCheckbox">losowa</label>
+        </div>
+        <div class="container2">
+            <div class="check_title">Data:</div>
+            <input type="date" id="date-1">
+            <div style="margin-bottom: 10px;" ></div>
+            <input type="checkbox" id="date-2" checked>
+            <label for="myCheckbox">losowa</label>
+        </div>
+        <br></br>
+        <input type="text" id="pesel_num" placeholder="ilość numerów" value = "10">
+        <button id = "button">Generuj</button>
+        <br></br>
+        <textarea disabled id="output"></textarea>
+    </div>
 </body>
+<script src="scripts.js"></script>
+<style src = "style.css"></style>
 </html>
