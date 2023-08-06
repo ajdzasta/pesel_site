@@ -199,6 +199,8 @@ function Gen(){
         output += gen[0] + " " + gen[1][0] + "-" + gen[1][1] + "-" + gen[1][2] + " " + gen[2] + "\n";
     }
 
+    output = output.slice(0, -2);
+
     console.log(output);
     document.getElementById("output").innerHTML = output;
 }
