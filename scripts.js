@@ -2,6 +2,7 @@ document.getElementById("sex-1").addEventListener("click", function(){ sex_check
 document.getElementById("sex-2").addEventListener("click", function(){ sex_check("sex-2") });
 document.getElementById("sex-3").addEventListener("click", function(){ sex_check("sex-3") });
 document.getElementById("button").addEventListener("click", Gen);
+document.getElementById("date-1").addEventListener("change", date);
 
 
 function pesel_control(pesel){
@@ -110,6 +111,9 @@ function sex_check(input_name){
         document.getElementById("sex-3").checked = false;
         document.getElementById(input_name).checked = true;
     }
+    if (document.getElementById(input_name).checked == false){
+        document.getElementById(input_name).checked = true;
+    }
 }
 
 function getRandomIntInclusive(min, max) {
@@ -171,15 +175,20 @@ function pesel_gen(options){
 }
 
 function Gen(){
-    console.log(document.getElementById("output").value);
+    //console.log(document.getElementById("output").value);
     let options = [0,0];
     const date_input = document.getElementById("date-1").value;
-    if (date_input == ""){
-        options[0] = null
+    const date_rand = document.getElementById("date-2").checked;
+    if (date_rand == true){
+        options[0] = null;
     }
-    else{
+    else if (date_input != ""){
         const date = date_input.split("-");
         options[0] = [parseInt(date[2]),parseInt(date[1]),parseInt(date[0])];
+    }
+    else{
+        //console.log("null");
+        return null;
     }
 
     if (document.getElementById("sex-1").checked){
@@ -192,6 +201,8 @@ function Gen(){
         options[1] = null
     }
 
+
+    t1 = performance.now();
     let gen = pesel_gen(options)
     let output = gen[0] + " " + gen[1][0] + "-" + gen[1][1] + "-" + gen[1][2] + " " + gen[2] + "\n";
     for (let i = 0; i < parseInt(document.getElementById("pesel_num").value) - 1; i++){
@@ -201,6 +212,15 @@ function Gen(){
 
     output = output.slice(0, -1);
 
-    console.log(output);
+    time = performance.now() - t1;
+    console.log(time);
+
+    //console.log(output);
     document.getElementById("output").innerHTML = output;
+}
+
+function date(){
+    if (document.getElementById("date-1").value == ""){
+        document.getElementById("date-2").checked = true;
+    }
 }
